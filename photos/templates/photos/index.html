@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 {% load static%}
 {% block styles %}
-<link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+<link rel="stylesheet" href="{% static 'css/basephotos.css' %}">
 {% endblock %}
 {% block content %}
 <div class="legend rounded-lg text-center">
-  <h3 class="display-6">The best HD free stock photos shared by talented photographers. </h3>
   <div class="search-container">
+    <h3 class="display-6">The best HD free stock photos shared by talented photographers. </h3>
     <form>
       <div class="container input-group">
         <input type="text" class="form-control" placeholder="Search by categories.." name="search">
@@ -14,8 +14,8 @@
         <br>
       </div>
     </form>
+    <p>travel,business,food,wedding,...</p>
   </div>
-  <p>travel,business,food,wedding,...</p>
 </div>
 {% for image in images %}
 <img src="{{image.image.url}}" alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
