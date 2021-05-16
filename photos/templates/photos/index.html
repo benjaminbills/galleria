@@ -1,6 +1,22 @@
 {% extends 'base.html' %}
+{% load static%}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+{% endblock %}
 {% block content %}
-<h1>working</h1>
+<div class="legend rounded-lg text-center">
+  <h3 class="display-6">The best HD free stock photos shared by talented photographers. </h3>
+  <div class="search-container">
+    <form>
+      <div class="container input-group">
+        <input type="text" class="form-control" placeholder="Search by categories.." name="search">
+        <button type="submit" class="btn btn-dark"><i class="fa fa-search"></i></button>
+        <br>
+      </div>
+    </form>
+  </div>
+  <p>travel,business,food,wedding,...</p>
+</div>
 {% for image in images %}
 <img src="{{image.image.url}}" alt="" data-bs-toggle="modal" data-bs-target="#exampleModal">
 
@@ -14,6 +30,7 @@
       </div>
       <div class="modal-body">
         {{image.image_description}}
+        <img src="{{image.image.url}}" alt="">
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
