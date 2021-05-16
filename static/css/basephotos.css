@@ -65,3 +65,7 @@ body {
 .search-container {
   padding: 10% 10% 10% 10%;
 }
+.modal {
+  background: rgba(0,0,0,0.8);
+  color: white;
+}
