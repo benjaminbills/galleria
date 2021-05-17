@@ -1,5 +1,5 @@
 # Galleria
-A personal gallery application that HD photography
+A personal gallery application with HD photography
 
 
 ## [Usage](https://technoblogger.herokuapp.com/)
