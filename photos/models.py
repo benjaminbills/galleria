@@ -16,11 +16,18 @@ class Image(models.Model):
         images = cls.objects.filter(category__name__contains=search_term)
         return images
   
+  @classmethod
+  def search_by_location(cls,search_term):
+        images = cls.objects.filter(location__name__contains=search_term)
+        return images
+  
 class Location(models.Model):
   name = models.CharField(max_length=255)
   #magic method
   def __str__(self): 
     return self.name
+  
+  
 
 class Category(models.Model):
   name = models.CharField(max_length=255)
