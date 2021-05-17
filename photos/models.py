@@ -34,3 +34,12 @@ class Category(models.Model):
   #magic method
   def __str__(self): 
     return self.name
+  
+  def save_category(self):
+      self.save() 
+      
+  def update_category(cls,id,name):
+    cls.objects.filter(id=id).update(name=name)     
+      
+  def delete_category(self):
+      self.delete()  
