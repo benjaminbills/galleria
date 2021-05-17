@@ -55,7 +55,52 @@ class LocationTestClass(TestCase):
       update=Location.objects.get(name='London')
       self.assertEqual(update.name,'London')  
       
-    
+class ImageTestClass(TestCase):
+   # Set up method
+   def setUp(self):
+      self.category = Category(name = 'travel')
+      self.category2 = Category(name = 'travel')
+      self.category.save()
+      self.category2.save()
+      self.location = Location(name = 'Kenya')
+      self.location2 = Location(name = 'Kenya')
+      self.location.save()
+      self.location2.save()
+      self.image = Image(name = 'Hot air balloon', image_description = 'this is an image', posted_date='10-10-2020', category = self.category, location = self.location)
+      self.image2 = Image(name = 'Adventure Venue', image_description = 'this is a beautiful image', posted_date='10-11-2020', category = self.category2, location = self.location2)
+      
+   # Testing  instance
+   def test_instance(self):
+        self.assertTrue(isinstance(self.image,Image)) 
+   def test_save_method(self):
+      self.image.save()     
+      images = Image.objects.all()
+      self.assertTrue(len(images) > 0) 
+      
+   def tearDown(self):
+      Image.objects.all().delete() 
+      Category.objects.all().delete() 
+      Location.objects.all().delete() 
+        
+   def test_delete_image(self):
+      self.image.save()
+      images=Image.objects.all()
+      self.assertEqual(len(images),1)
+      self.image.delete()
+      del_images=Image.objects.all()
+      self.assertEqual(len(del_images),0)
+
+   def test_search_by_location(self):
+      self.image.save()
+      self.image2.save()
+      image=Image.search_by_location('Kenya')
+      self.assertEqual(len(image),2)  
+
+   def test_search_by_category(self):
+      self.image.save()
+      self.image2.save()
+      image=Image.search_by_category('travel')
+      self.assertEqual(len(image),2) 
         
 
         
