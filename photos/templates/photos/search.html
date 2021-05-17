@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static%}
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/basephotos.css' %}">
+{% endblock %}
+{% block content %}
+<div class="legend rounded-lg text-center">
+  <div class="search-container">
+    <h3 class="display-6">The best HD free stock photos shared by talented photographers. </h3>
+    <form>
+      <div class="container input-group">
+        <input type="text" class="form-control" placeholder="Search by categories.." name="search">
+        <button type="submit" class="btn btn-dark"><i class="fa fa-search"></i></button>
+        <br>
+      </div>
+    </form>
+    <p>travel,business,food,wedding,...</p>
+  </div>
+</div>
+
+
+{% endblock  %}
