@@ -49,13 +49,8 @@
               <div class="modal-footer">
                 <p>{{image.location}}</p>
                 <p>Published on {{image.posted_date|date:"M d, Y"}}</p>
-                <!-- <button class="btn btn-secondary"><i class="fas fa-share"></i>Share</button> -->
-                <div id="code">
-                  <button onclick="CopyToClipboard('css-prop')" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="copy!"><i class="fas fa-share"></i> Share link</button>
-                  <div id="css-prop">
-                  <p class="css"> http:</span>//www.google.com/{{image.id}}</p>
-                  </div>
-                </div>
+                <input type="text" value="{{image.image.url}}" id="{{image.id}}">
+                <button class='btn btn-primary' onclick="myFunction('{{image.id}}')"><i class="fas fa-share"></i>Share</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
@@ -69,16 +64,20 @@
 
 {% endblock  %}
 {% block script %}
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
   //copy css function to clipboard
-  function CopyToClipboard(id) {
-  var r = document.createRange();
-  r.selectNode(document.getElementById(id));
-  window.getSelection().removeAllRanges();
-  window.getSelection().addRange(r);
+  function myFunction(id) {
+  var copyText = document.getElementById(id);
+  copyText.select();
+  copyText.setSelectionRange(0, 99999)
   document.execCommand("copy");
-  window.getSelection().removeAllRanges();
-  alert("copied!");
+  Swal.fire({
+    position: 'top-end',
+    icon: 'success',
+    title: 'link copied',
+    showConfirmButton: false,
+    timer: 1500})
 }
 </script>
 {% endblock  %}

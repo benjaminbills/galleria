@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
 {% block content %}
- 
+ <div class="container details">
+   <p>{{image.name}}</p>
+  <img src="{{image.image.url}}" alt="">
+  <p>{{image.image.url}}</p>
+ </div>
 {% endblock  %}
