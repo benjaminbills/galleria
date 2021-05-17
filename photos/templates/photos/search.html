@@ -17,6 +17,14 @@
     <p>travel,business,food,wedding,...</p>
   </div>
 </div>
+<div class="">
+  <nav class="nav nav-pills nav-fill">
+    <a class="nav-link" href="{% url 'index' %}">All location</a>
+    {% for location in locations %}
+    <a class="nav-link" href="{% url 'search_by_location' location%}">{{location}}</a>
+    {% endfor %}
+  </nav>
+</div>
 <div class="container container-photos">
   <div class="row">
     <div class="col-12">
@@ -42,6 +50,12 @@
                 <p>{{image.location}}</p>
                 <p>Published on {{image.posted_date|date:"M d, Y"}}</p>
                 <button class="btn btn-secondary"><i class="fas fa-share"></i>Share</button>
+                <div id="code">
+                  <button onclick="CopyToClipboard('css-prop')" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="copy!"><i class="fas fa-share"></i> Share link</button>
+                  <div id="css-prop">
+                  <p class="css"> http:</span>//www.google.com/{{image.id}}</p>
+                  </div>
+                </div>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
               </div>
             </div>
@@ -54,4 +68,18 @@
 </div>
 
 
+{% endblock  %}
+{% block script %}
+<script>
+  //copy css function to clipboard
+  function CopyToClipboard(id) {
+  var r = document.createRange();
+  r.selectNode(document.getElementById(id));
+  window.getSelection().removeAllRanges();
+  window.getSelection().addRange(r);
+  document.execCommand("copy");
+  window.getSelection().removeAllRanges();
+  alert("copied!");
+}
+</script>
 {% endblock  %}

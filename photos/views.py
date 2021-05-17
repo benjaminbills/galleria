@@ -23,7 +23,8 @@ def search_results(request):
       return render(request, 'photos/search.html',{"message":message})
 
 def search_by_location(request, location):
+  locations = Location.objects.all()
   images = Image.search_by_location(location)
   # images = get_object_or_404(Image, location_id=location_id)
-  return render(request, 'photos/search.html',{"images": images})
+  return render(request, 'photos/search.html',{"images": images, 'locations':locations})
 
