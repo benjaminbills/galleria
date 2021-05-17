@@ -17,6 +17,41 @@
     <p>travel,business,food,wedding,...</p>
   </div>
 </div>
+<div class="container container-photos">
+  <div class="row">
+    <div class="col-12">
+      <div class="card-columns">
+        {% for image in images %}
+        <div class="card-container">
+          <div class="card">
+              <img src="{{image.image.url}}" alt="" data-bs-toggle="modal" data-bs-target="#Modal{{image.id}}">
+          </div>
+        </div>
+        <div class="modal fade" id="Modal{{image.id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl text-center">
+            <div class="modal-content bg-dark">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"> {{image.image_description}}</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+               
+                <img class="img-responsive" src="{{image.image.url}}" alt="" >
+              </div>
+              <div class="modal-footer">
+                <p>{{image.location}}</p>
+                <p>Published on {{image.posted_date|date:"M d, Y"}}</p>
+                <button class="btn btn-secondary"><i class="fas fa-share"></i>Share</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
 
 
 {% endblock  %}
