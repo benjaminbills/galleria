@@ -21,6 +21,11 @@ class Image(models.Model):
         images = cls.objects.filter(location__name__contains=search_term)
         return images
   
+  @classmethod
+  def get_image_by_id(cls,id):
+        image=cls.objects.get(id=id)
+        return image 
+  
 class Location(models.Model):
   name = models.CharField(max_length=255)
   #magic method

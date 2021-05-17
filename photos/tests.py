@@ -101,6 +101,11 @@ class ImageTestClass(TestCase):
       self.image2.save()
       image=Image.search_by_category('travel')
       self.assertEqual(len(image),2) 
+
+   def test_get_image(self):
+      self.image.save()
+      image=Image.get_image_by_id(self.image.id)
+      self.assertEqual('Hot air balloon', image.name)
         
 
         
