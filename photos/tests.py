@@ -17,10 +17,9 @@ class CategoryTestClass(TestCase):
       
    def test_update_category(self):
       self.category.save_category()
-      self.category.name = 'fitness'
-      self.category.save()
-      update=Category.objects.get(name='fitness')
-      self.assertEqual(update.name,'fitness')       
+      self.category.update_category(self.category.id, name='Food')
+      update=Category.objects.get(name='Food')
+      self.assertEqual(update.name,'Food')        
       
 
    def tearDown(self):
@@ -50,8 +49,7 @@ class LocationTestClass(TestCase):
       
    def test_update_location(self):
       self.location.save_location()
-      self.location.name = 'London'
-      self.location.save()
+      self.location.update_location(self.location.id, name='London')
       update=Location.objects.get(name='London')
       self.assertEqual(update.name,'London')  
       
@@ -71,11 +69,19 @@ class ImageTestClass(TestCase):
       
    # Testing  instance
    def test_instance(self):
-        self.assertTrue(isinstance(self.image,Image)) 
+        self.assertTrue(isinstance(self.image,Image))
+
    def test_save_method(self):
-      self.image.save()     
+      self.image.save_image()     
       images = Image.objects.all()
       self.assertTrue(len(images) > 0) 
+    
+   def test_update_method(self):
+      self.image.save_image()     
+      image = Image.get_image_by_id(self.image.id)
+      image.name = 'Fast Moving Car'
+      image.update_image(self.image.id)
+      self.assertEqual('Fast Moving Car', image.name )
       
    def tearDown(self):
       Image.objects.all().delete() 
@@ -86,7 +92,7 @@ class ImageTestClass(TestCase):
       self.image.save()
       images=Image.objects.all()
       self.assertEqual(len(images),1)
-      self.image.delete()
+      self.image.delete_image()
       del_images=Image.objects.all()
       self.assertEqual(len(del_images),0)
 

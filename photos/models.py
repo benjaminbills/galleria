@@ -11,6 +11,17 @@ class Image(models.Model):
   
   def __str__(self):
         return self.name
+  
+  def save_image(self):
+        self.save()
+
+  def delete_image(self):
+        self.delete()
+  @classmethod
+  def update_image(cls,image_id):
+      image=cls.objects.filter(pk=image_id)
+      image.update()
+      return image
   @classmethod
   def search_by_category(cls,search_term):
         images = cls.objects.filter(category__name__contains=search_term)
@@ -38,6 +49,10 @@ class Location(models.Model):
   def delete_location(self):
       self.delete()  
   
+  @classmethod
+  def update_location(cls, id, name):
+      location = cls.objects.filter(pk=id).update(name=name)
+      return location
 
 class Category(models.Model):
   name = models.CharField(max_length=255)
@@ -50,3 +65,8 @@ class Category(models.Model):
       
   def delete_category(self):
       self.delete()  
+
+  @classmethod
+  def update_category(cls, id, name):
+      category = cls.objects.filter(pk=id).update(name=name)
+      return category
