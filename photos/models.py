@@ -26,7 +26,12 @@ class Location(models.Model):
   #magic method
   def __str__(self): 
     return self.name
-  
+
+  def save_location(self):
+      self.save()      
+      
+  def delete_location(self):
+      self.delete()  
   
 
 class Category(models.Model):
@@ -36,10 +41,7 @@ class Category(models.Model):
     return self.name
   
   def save_category(self):
-      self.save() 
-      
-  def update_category(cls,id,name):
-    cls.objects.filter(id=id).update(name=name)     
+      self.save()      
       
   def delete_category(self):
       self.delete()  
