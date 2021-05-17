@@ -30,6 +30,7 @@ If you'd like to request a new function, feel free to do so by opening an issue 
 - [Bootstrap](https://getbootstrap.com/)- version 5.0
 - [Django](https://www.djangoproject.com/) - version 3.2
 - [Cloudinary](https://cloudinary.com/)
+- [sweetalert2](https://sweetalert2.github.io/)
 - [Check requirements for more details](https://github.com/benjaminbills/galleria/blob/master/requirements.txt)
 
 ## To-do
