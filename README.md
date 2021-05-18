@@ -2,7 +2,7 @@
 A personal gallery application with HD photography
 
 
-## [Usage](https://technoblogger.herokuapp.com/)
+## [Usage](https://galleriaapplication.herokuapp.com/)
 
 ### Development
 
